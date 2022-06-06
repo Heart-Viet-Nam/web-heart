@@ -4,6 +4,8 @@
   "description": "Heart web ",
   "main": "src/server.ts",
   "scripts": {
+    "bundle:production": "gulp bundle-files",
+    "bundle:watch": "gulp watch-files",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +23,7 @@
     "@types/bcrypt": "^5.0.0",
     "@types/compression": "^1.7.2",
     "@types/connect-flash": "^0.0.37",
+    "@types/csurf": "^1.11.2",
     "@types/express": "^4.17.13",
     "@types/express-ejs-layouts": "^2.5.0",
     "@types/express-session": "^1.17.4",
@@ -33,6 +36,7 @@
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^8.0.0",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.16",
     "prettier": "^2.6.2",
@@ -46,6 +50,7 @@
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^4.6.0",
+    "csurf": "^1.11.0",
     "del": "^6.1.1",
     "dotenv": "^16.0.0",
     "ejs": "^3.1.7",

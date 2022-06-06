@@ -65,10 +65,10 @@ app.use(
 const libraryPath = '../assets/lib' 
 app.use('/js', [
   express.static(path.join(__dirname, `${libraryPath}/jquery-validation`)),
-  express.static(path.join(__dirname, `${libraryPath}/jquery-easing-v1.4.1`)),
+  express.static(path.join(__dirname, `${libraryPath}/jquery-easing`)),
   express.static(path.join(__dirname, `${libraryPath}/jquery-v3.6.0`)),
-  express.static(path.join(__dirname, `${libraryPath}/flatpickr-v4.6.13`)),
-  express.static(path.join(__dirname, `${libraryPath}/chart-v3.8.0`)),
+  express.static(path.join(__dirname, `${libraryPath}/flatpickr`)),
+  express.static(path.join(__dirname, `${libraryPath}/chart`)),
   express.static(path.join(__dirname, `${libraryPath}/bootstrap/js`)),
 ])
 app.use('/css', [
