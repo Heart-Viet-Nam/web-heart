@@ -9,6 +9,7 @@ import flash from 'connect-flash';
 import helmet from 'helmet';
 import favicon from 'serve-favicon';
 import { v4 as uuidv4 } from 'uuid';
+import passport from 'passport'
 import dotenv from 'dotenv';
 dotenv.config();
 
