@@ -2,7 +2,7 @@ const gulp = require('gulp')
 const concat = require('gulp-concat')
 const cleanCSS = require('gulp-clean-css')
 const imagemin = require('gulp-imagemin')
-const UglifyJS = require("uglify-js")
+const terser = require('gulp-terser')
 const moment = require('moment-timezone')
 
 const getTime = () => {
@@ -13,7 +13,11 @@ const getTime = () => {
 
 gulp.task('scripts', () => {
     return gulp.src(['assets/js/*.js', 'assets/js/**/*.js'])
-            .pipe(concat('all.js'))
+            .pipe(concat(`main-${getTime}.min.js`))
+            .pipe(terser({
+                keep_fnames: true,
+                mangle: { debug: true }
+              }))
             .pipe(gulp.dest('public/js'));
   });
 

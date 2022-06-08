@@ -13,7 +13,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import { sessionStore } from './config/sessionStore';
-import route from './routes/v1';
+import route from './routes';
 import { connectDB } from './config/mongodb';
 
 const app = express();
@@ -66,7 +66,7 @@ const libraryPath = '../assets/lib'
 app.use('/js', [
   express.static(path.join(__dirname, `${libraryPath}/jquery-validation`)),
   express.static(path.join(__dirname, `${libraryPath}/jquery-easing`)),
-  express.static(path.join(__dirname, `${libraryPath}/jquery-v3.6.0`)),
+  express.static(path.join(__dirname, `${libraryPath}/jquery`)),
   express.static(path.join(__dirname, `${libraryPath}/flatpickr`)),
   express.static(path.join(__dirname, `${libraryPath}/chart`)),
   express.static(path.join(__dirname, `${libraryPath}/bootstrap/js`)),
