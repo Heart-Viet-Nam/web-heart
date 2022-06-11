@@ -5,9 +5,9 @@ class SiteControllers {
     // [GET] /
     ladingPage(req: Request, res: Response, next: NextFunction) {
         try {
-            
+            res.status(200).render('Site/landing/index', {layout: false})
         } catch (error) {
-            
+            res.status(500).json(error)
         }
     }
 

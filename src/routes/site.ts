@@ -5,6 +5,6 @@ import siteControllers from '../app/controllers/Site/SiteControllers'
 
 const router = express.Router()
 
-router.get('/', )
+router.get('/', siteControllers.ladingPage)
 
 export default router

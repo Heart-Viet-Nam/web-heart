@@ -7,15 +7,15 @@ import statusRouter from './status'
 
 const route = (app: Application) => {
 
-    app.use('/administration')
+    // app.use('/administration')
 
-    app.use('/doctor')
+    // app.use('/doctor')
 
-    app.use('/patient')
+    // app.use('/patient')
 
-    app.use('/')
+    app.use('/', siteRouter)
 
-    app.use('/')
+    // app.use('/')
 }
 
 export default route
