@@ -49,11 +49,7 @@ class SiteControllers {
 
     // [GET] /about-us
     aboutRender(req: Request, res: Response, next: NextFunction) {
-        try {
-            
-        } catch (error) {
-            
-        }
+        res.status(200).render('Site/landing/about-us', {layout: false})
     }
 
     // [GET] /contact-us
@@ -64,7 +60,6 @@ class SiteControllers {
             
         }
     }
-
 
 }
 

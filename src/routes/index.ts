@@ -15,7 +15,7 @@ const route = (app: Application) => {
 
     app.use('/', siteRouter)
 
-    // app.use('/')
+    app.use('/', statusRouter)
 }
 
 export default route

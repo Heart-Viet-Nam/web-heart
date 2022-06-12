@@ -9,11 +9,8 @@ const id = '04122021'
 gulp.task('scripts', () => {
 
     return gulp.src(['assets/js/*.js', 'assets/js/**/*.js'])
-            .pipe(concat(`main-${id}.min.js`))
-            .pipe(terser({
-                keep_fnames: true,
-                mangle: { debug: true }
-              }))
+            .pipe(concat(`main-${id}.bundle.js`))
+            .pipe(terser())
             .pipe(gulp.dest('public/js'));
   });
 

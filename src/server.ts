@@ -71,13 +71,17 @@ app.use('/js', [
   express.static(path.join(__dirname, `${libraryPath}/flatpickr`)),
   express.static(path.join(__dirname, `${libraryPath}/chart`)),
   express.static(path.join(__dirname, `${libraryPath}/bootstrap/js`)),
+  express.static(path.join(__dirname, `${libraryPath}/lazysizes`)),
+  express.static(path.join(__dirname, `${libraryPath}/ckeditor`)),
+  express.static(path.join(__dirname, `${libraryPath}/select2/js`))
 ])
 app.use('/css', [
   express.static(path.join(__dirname, `${libraryPath}/bootstrap/css`)),
-  express.static(path.join(__dirname, `${libraryPath}/font-awesome`))
+  express.static(path.join(__dirname, `${libraryPath}/font-awesome`)),
+  express.static(path.join(__dirname, `${libraryPath}/select2/css`))
 ])
 app.use(express.static(path.join(__dirname, '../public')));
-// app.use(favicon(path.join(__dirname, '../public', 'img/club.png')));
+app.use(favicon(path.join(__dirname, '../public/img/favicon.png')));
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
