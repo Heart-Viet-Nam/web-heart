@@ -12,7 +12,8 @@
     "build": "tsc",
     "watch": "tsc -w",
     "check": "prettier --check \"src/**/*.ts\" ",
-    "format": "prettier --write \"src/**/*.ts\" "
+    "format": "prettier --write \"src/**/*.ts\" ",
+    "test": "terser Test/test.js -o Test/foo.min.js -c -m"
   },
   "repository": {
     "type": "git",
@@ -50,6 +51,7 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.16",
     "prettier": "^2.6.2",
+    "terser": "^5.14.1",
     "ts-node": "^10.7.0",
     "tsconfig-paths": "^4.0.0",
     "typescript": "^4.6.4"

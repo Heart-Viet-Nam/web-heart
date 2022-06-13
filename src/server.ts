@@ -73,7 +73,8 @@ app.use('/js', [
   express.static(path.join(__dirname, `${libraryPath}/bootstrap/js`)),
   express.static(path.join(__dirname, `${libraryPath}/lazysizes`)),
   express.static(path.join(__dirname, `${libraryPath}/ckeditor`)),
-  express.static(path.join(__dirname, `${libraryPath}/select2/js`))
+  express.static(path.join(__dirname, `${libraryPath}/select2/js`)),
+  express.static(path.join(__dirname, `${libraryPath}/hammer`))
 ])
 app.use('/css', [
   express.static(path.join(__dirname, `${libraryPath}/bootstrap/css`)),

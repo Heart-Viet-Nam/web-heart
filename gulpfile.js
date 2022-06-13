@@ -7,12 +7,11 @@ const terser = require('gulp-terser')
 const id = '04122021'
 
 gulp.task('scripts', () => {
-
     return gulp.src(['assets/js/*.js', 'assets/js/**/*.js'])
-            .pipe(concat(`main-${id}.bundle.js`))
             .pipe(terser())
+            .pipe(concat(`main-${id}.bundle.js`))
             .pipe(gulp.dest('public/js'));
-  });
+});
 
 gulp.task('styles', () => {
 
