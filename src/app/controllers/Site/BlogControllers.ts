@@ -1,6 +1,3 @@
+class BlogControllers {}
 
-class BlogControllers {
-
-}
-
-export default new BlogControllers
+export default new BlogControllers();

@@ -1,14 +1,15 @@
-import { Request, Response, NextFunction } from 'express';
-import { ValidationError, validationResult } from 'express-validator';
+import { Request, Response, NextFunction } from "express";
+import { ValidationError, validationResult } from "express-validator";
 
 class ValidationResult {
   handler(elements: ValidationError[]) {
-    const object: { [key: string]: Pick<ValidationError, 'msg' | 'value'> } = {};
+    const object: { [key: string]: Pick<ValidationError, "msg" | "value"> } =
+      {};
     for (const element of elements) {
       let msg = element.msg;
       object[element.param] = {
         msg,
-        value: element.value
+        value: element.value,
       };
     }
     return object;
@@ -22,7 +23,7 @@ class ValidationResult {
       for (const key of keys) {
         req.flash(key, object[key].msg);
       }
-      return res.redirect('back');
+      return res.redirect("back");
     }
     next();
   }
@@ -36,4 +37,4 @@ class ValidationResult {
   }
 }
 
-export default new ValidationResult;
+export default new ValidationResult();

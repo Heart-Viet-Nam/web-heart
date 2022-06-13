@@ -1,9 +1,9 @@
-import express, {Request, Response, NextFunction} from 'express'
+import express, { Request, Response, NextFunction } from "express";
 
-const router = express.Router()
+const router = express.Router();
 
-router.get('*', (req: Request, res: Response, next: NextFunction) => {
-    res.status(200).render('Status/404', {layout: false})
-})
+router.get("*", (req: Request, res: Response, next: NextFunction) => {
+  res.status(200).render("Status/404", { layout: false });
+});
 
-export default router
+export default router;

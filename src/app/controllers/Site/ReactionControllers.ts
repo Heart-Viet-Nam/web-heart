@@ -1,6 +1,3 @@
+class ReactionControllers {}
 
-class ReactionControllers {
-
-}
-
-export default new ReactionControllers
+export default new ReactionControllers();

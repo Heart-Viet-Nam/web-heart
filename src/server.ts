@@ -1,27 +1,27 @@
-import express from 'express';
-import path from 'path';
-import morgan from 'morgan';
-import compression from 'compression';
-import methodOverride from 'method-override';
-import session from 'express-session';
-import expressLayouts from 'express-ejs-layouts';
-import flash from 'connect-flash';
-import helmet from 'helmet';
-import favicon from 'serve-favicon';
-import { v4 as uuidv4 } from 'uuid';
-import passport from 'passport'
-import dotenv from 'dotenv';
+import express from "express";
+import path from "path";
+import morgan from "morgan";
+import compression from "compression";
+import methodOverride from "method-override";
+import session from "express-session";
+import expressLayouts from "express-ejs-layouts";
+import flash from "connect-flash";
+import helmet from "helmet";
+import favicon from "serve-favicon";
+import { v4 as uuidv4 } from "uuid";
+import passport from "passport";
+import dotenv from "dotenv";
 dotenv.config();
 
-import { sessionStore } from './config/sessionStore';
-import route from './routes';
-import { connectDB } from './config/mongodb';
+import { sessionStore } from "./config/sessionStore";
+import route from "./routes";
+import { connectDB } from "./config/mongodb";
 
 const app = express();
 const port = process.env.PORT || 8080;
 
 // Logger
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 
 // Secure
 app.use(helmet());
@@ -29,15 +29,15 @@ app.use(helmet());
 // Session
 app.use(
   session({
-    name: 'access-token',
+    name: "access-token",
     secret: process.env.SECRET_KEY || uuidv4(),
     resave: false,
     saveUninitialized: false,
     cookie: {
       secure: true,
-      maxAge: 60000 * 60 //? Session expire in 1 hours
+      maxAge: 60000 * 60, //? Session expire in 1 hours
     },
-    store: sessionStore
+    store: sessionStore,
   })
 );
 
@@ -45,7 +45,7 @@ app.use(
 app.use(flash());
 
 // Override
-app.use(methodOverride('_method'));
+app.use(methodOverride("_method"));
 
 // Gzip
 app.use(
@@ -53,18 +53,18 @@ app.use(
     level: 6,
     threshold: 10 * 1000,
     filter: (req, res) => {
-      if (req.headers['x-no-compression']) {
+      if (req.headers["x-no-compression"]) {
         return false;
       } else {
         return compression.filter(req, res);
       }
-    }
+    },
   })
 );
 
 // Public
-const libraryPath = '../assets/lib' 
-app.use('/js', [
+const libraryPath = "../assets/lib";
+app.use("/js", [
   express.static(path.join(__dirname, `${libraryPath}/jquery-validation`)),
   express.static(path.join(__dirname, `${libraryPath}/jquery-easing`)),
   express.static(path.join(__dirname, `${libraryPath}/jquery`)),
@@ -74,23 +74,23 @@ app.use('/js', [
   express.static(path.join(__dirname, `${libraryPath}/lazysizes`)),
   express.static(path.join(__dirname, `${libraryPath}/ckeditor`)),
   express.static(path.join(__dirname, `${libraryPath}/select2/js`)),
-  express.static(path.join(__dirname, `${libraryPath}/hammer`))
-])
-app.use('/css', [
+  express.static(path.join(__dirname, `${libraryPath}/hammer`)),
+]);
+app.use("/css", [
   express.static(path.join(__dirname, `${libraryPath}/bootstrap/css`)),
   express.static(path.join(__dirname, `${libraryPath}/font-awesome`)),
-  express.static(path.join(__dirname, `${libraryPath}/select2/css`))
-])
-app.use(express.static(path.join(__dirname, '../public')));
-app.use(favicon(path.join(__dirname, '../public/img/favicon.png')));
+  express.static(path.join(__dirname, `${libraryPath}/select2/css`)),
+]);
+app.use(express.static(path.join(__dirname, "../public")));
+app.use(favicon(path.join(__dirname, "../public/img/favicon.png")));
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Template Engine
-app.set('views', path.join(__dirname, '../views'));
-app.set('view engine', 'ejs');
+app.set("views", path.join(__dirname, "../views"));
+app.set("view engine", "ejs");
 app.use(expressLayouts);
 
 // Route Init

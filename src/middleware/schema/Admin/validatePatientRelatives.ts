@@ -1,4 +1,4 @@
-import { check } from 'express-validator';
+import { check } from "express-validator";
 // import { messageVietnamese } from '../../utils/message';
 
 // //? CREATE PATIENT, RELATIVES PROFILE SCHEMA
@@ -20,8 +20,5 @@ import { check } from 'express-validator';
 //   check('password').not().isEmpty().withMessage(messageVietnamese.ER001('Password'))
 // ];
 
-
 //? UPDATE PATIENT, RELATIVES PROFILE SCHEMA
-export const updateDoctorSchema = [
-
-]
+export const updateDoctorSchema = [];

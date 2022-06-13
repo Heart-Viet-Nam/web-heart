@@ -71,16 +71,87 @@ $(document).ready(() => {
             this.element(element); 
         },
         rules: {
-
+            name: {
+                required: true
+            },
+            sex: {
+                required: true
+            }, 
+            phone: {
+                required: true
+            },
+            language: {
+                required: true
+            }, 
+            email: {
+                required: true
+            },
+            address: {
+                required: true
+            },
+            specialization: {
+                required: true
+            },
+            research: {
+                
+            },
+            image: {
+                required: true
+            },
+            username: {
+                required: true
+            },
+            password: {
+                required: true
+            },
+            cfPassword: {
+                required: true
+            }
         },
         messages: {
-
+            name: {
+                required: messageVietnamese.ER001('')
+            },
+            sex: {
+                required: messageVietnamese.ER001('')
+            },
+            phone: {
+                required: messageVietnamese.ER001('')
+            },
+            language: {
+                required: messageVietnamese.ER001('')
+            }, 
+            email: {
+                required: messageVietnamese.ER001('')
+            },
+            address: {
+                required: messageVietnamese.ER001('')
+            },
+            specialization: {
+                required: messageVietnamese.ER001('')
+            },
+            research: {
+                
+            },
+            image: {
+                required: messageVietnamese.ER001('')
+            },
+            username: {
+                required: messageVietnamese.ER001('')
+            },
+            password: {
+                required: messageVietnamese.ER001('')
+            },
+            cfPassword: {
+                required: messageVietnamese.ER001('')
+            }
         },
         submitHandler: (form) => {
             form.action = '/login/auth';
             form.method = 'post'
             form.submit();
             $("#login-submit-button").attr("disabled", true);
+            
         }
     });
 });

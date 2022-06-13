@@ -1,6 +1,3 @@
+class UserControllers {}
 
-class UserControllers {
-
-}
-
-export default new UserControllers
+export default new UserControllers();

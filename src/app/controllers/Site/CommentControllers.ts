@@ -1,6 +1,3 @@
+class CommentControllers {}
 
-class CommentControllers {
-
-}
-
-export default new CommentControllers
+export default new CommentControllers();

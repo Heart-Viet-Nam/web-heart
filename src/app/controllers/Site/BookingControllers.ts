@@ -1,7 +1,3 @@
+class BookingControllers {}
 
-
-class BookingControllers {
-
-}
-
-export default new BookingControllers
+export default new BookingControllers();
