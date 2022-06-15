@@ -1,48 +1,59 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from 'express';
 
 class SiteControllers {
+
   // [GET] /
   ladingPage(req: Request, res: Response, next: NextFunction) {
     try {
-      res.status(200).render("Site/landing/index", { layout: false });
+      res.status(200).render("Site/guest/index", { layout: false });
     } catch (error) {
       res.status(500).json(error);
     }
   }
 
   // [GET] /login
-  signIn(req: Request, res: Response, next: NextFunction) {
+  login(req: Request, res: Response, next: NextFunction) {
     try {
-    } catch (error) {}
+        res.status(200).render('Site/guest/login', {layout: false})
+    } catch (error) {
+        res.status(500).render('Satus/500', {layout: false})
+    }
   }
 
-  // [GET] /signup
-  signOut(req: Request, res: Response, next: NextFunction) {
+  // [GET] /register
+  register(req: Request, res: Response, next: NextFunction) {
     try {
-    } catch (error) {}
+        res.status(200).render('Site/guest/register', {layout: false})
+    } catch (error) {
+        res.status(500).render('Status/500', {layout: false})
+    }
   }
 
-  // [GET] /event/:slug
-  eventRender(req: Request, res: Response, next: NextFunction) {
-    try {
-    } catch (error) {}
-  }
-
-  // [GET] /blog/:slug
-  blogRender(req: Request, res: Response, next: NextFunction) {
-    try {
-    } catch (error) {}
-  }
+  // [GET] /faq
+    fag(req: Request, res: Response, next: NextFunction) {
+        try {
+            res.status(200).render('Site/guest/faq', {layout: false})
+        } catch (error) {
+            res.status(500).render('Status/500', {layout: false})
+        }
+    }
 
   // [GET] /about-us
-  aboutRender(req: Request, res: Response, next: NextFunction) {
-    res.status(200).render("Site/landing/about-us", { layout: false });
+  about(req: Request, res: Response, next: NextFunction) {
+      try {
+        res.status(200).render('Site/guest/about', { layout: false });
+    } catch (error) {
+        res.status(500).render('Status/500', {layout: false})
+    }
   }
 
   // [GET] /contact-us
-  contactRender(req: Request, res: Response, next: NextFunction) {
+  contact(req: Request, res: Response, next: NextFunction) {
     try {
-    } catch (error) {}
+        res.status(200).render('Site/guest/contact', { layout: false });
+    } catch (error) {
+        res.status(500).render('Status/500', {layout: false})
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-import {messageVietnamese} from './message'
+import {messageVietnamese} from '../../message'
 
 $(document).ready(() => {
 

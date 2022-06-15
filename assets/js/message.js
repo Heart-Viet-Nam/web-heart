@@ -12,6 +12,7 @@ export const messageVietnamese = {
   ER008: `Không nhập ký tự in hoa.`,
   ER009: (param) => `Ảnh tải lên tối đa ${param} MB.`,
   ER0010: `Chỉ cho tải ảnh lên.`,
+  ER0011: `Chỉ nhập số điện thoại`,
 
   // Auth
   RES001: `Thông tin đăng nhập không đúng.`,

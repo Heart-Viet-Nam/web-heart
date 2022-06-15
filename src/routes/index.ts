@@ -10,7 +10,7 @@ const route = (app: Application) => {
 
   // app.use('/doctor')
 
-  // app.use('/patient')
+  // app.use('/user')
 
   app.use("/", siteRouter);
 
