@@ -1,8 +1,12 @@
+import { method } from 'lodash';
 import {messageVietnamese} from '../../message'
 
 $(document).ready(() => {
 
-    const nameForm = 'name-form'  //~ Give your form name here
+    const nameForm = 'name-form'                //~ Give form name
+    const submitButton = 'login-submit-button'  //~ Give submit button name 
+    const actionSubmit = '/admin/create-doctor' //~ Give action for submit 
+    const methodSubmit = 'post'                 //~ Give method for submit
     
     //~ BASE
     //? Check max length
@@ -33,6 +37,20 @@ $(document).ready(() => {
         }) 
     }
 
+    //? Check range of length
+    const rangeLength = (nameMethod, minLength, maxLength, nameInput) => {
+        $.validator.addMethod(`${nameMethod}`, (value, element) => {
+            const valueLength = value.length
+            if(valueLength) {
+                return valueLength >= minLength && valueLength <= maxLength
+            }
+            return true
+        }, (length, element) => {
+            const currentLength = $(element).val().length
+            return messageVietnamese.ER0012(`${nameInput}`, `${minLength}`, `${maxLength}`, `${currentLength}`)
+        })
+    }
+
     //? Check 2 bytes
     const twoBytes = (nameMethod, nameInput) => {
         $.validator.addMethod(`${nameMethod}`, (value, element) => {
@@ -60,7 +78,15 @@ $(document).ready(() => {
     const fileSize = (nameMethod, limitSize, nameInput) => {
         $.validator.addMethod(`${nameMethod}`, (value, element) => {
             return this.optional(element) || (element.files[0].size <= limitSize * 1000000)  //? MB
-        }, messageJapanese.ECL034('1 MB'));
+        }, messageVietnamese.ER0013(`${limitSize}`))
+    }
+
+    //? Check strong password
+    const strongPassword = (nameMethod, nameInput) => {
+        $.validator.addMethod(`${nameMethod}`, (value, method) => {
+            const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$/
+            return this.optional(element) || regex.test(value); 
+        }, messageVietnamese.ER0015)
     }
 
     //~ USING CUSTOM METHODS
@@ -82,6 +108,14 @@ $(document).ready(() => {
 
     maxLength('maxResearch', 100, 'công trình nghiên cứu')
     noSpace('noSpaceResearch', 'công trình nghiên cứu')
+
+    fileSize('checkImageSize', 5)
+
+    maxLength('maxUsername', 100, 'tên tài khoản')
+
+    noSpace('noSpacePassword', 'mật khẩu')
+    rangeLength('limitPassword', 8, 20, 'mật khẩu')
+    strongPassword('checkStrongPassword')
 
     $(`#${nameForm}`).validate({
         onfocusout:(element) => {
@@ -108,7 +142,17 @@ $(document).ready(() => {
             email: {
                 required: true,
                 checkValidEmail: true,
-                maxEmail: true
+                maxEmail: true,
+                remote: {
+                    url: '/api/checker/email',
+                    type: 'post',
+                    data: {
+                      email: () => {
+                        return $( "#email" ).val();
+                      }
+                    },
+                    dataType: 'json'
+                }
             },
             address: {
                 required: true,
@@ -128,13 +172,30 @@ $(document).ready(() => {
                 maxResearch: true
             },
             image: {
-                required: true
+                extension: 'jpg|jpeg|png|gif',
+                checkImageSize: true
             },
             username: {
-                required: true
+                required: true,
+                checkValidEmail: true,
+                maxUsername: true,
+                remote: {
+                    url: '/api/checker/account',
+                    type: 'post',
+                    data: {
+                      username: () => {
+                        return $( "#username" ).val();
+                      }
+                    },
+                    dataType: 'json'
+                }
             },
             password: {
-                required: true
+                required: true,
+                noSpacePassword: true,
+                check2Bytes: true,
+                limitPassword: true,
+                checkStrongPassword: true
             },
             cfPassword: {
                 required: true,
@@ -165,10 +226,11 @@ $(document).ready(() => {
                 required: messageVietnamese.ER001('chuyên khoa')
             },
             image: {
-                required: messageVietnamese.ER001('ảnh chân dung')
+                extension: messageVietnamese.ER0014('jpg/jpeg, png, gif')
             },
             username: {
-                required: messageVietnamese.ER001('tên tài khoản')
+                required: messageVietnamese.ER001('tên tài khoản'),
+                remote: messageVietnamese.ER007('tên tài khoản')
             },
             password: {
                 required: messageVietnamese.ER001('mật khẩu')
@@ -179,11 +241,10 @@ $(document).ready(() => {
             }
         },
         submitHandler: (form) => {
-            form.action = '/login/auth';
-            form.method = 'post'
+            form.action = actionSubmit;
+            form.method = methodSubmit
             form.submit();
-            $("#login-submit-button").attr("disabled", true);
-
+            $(`#${submitButton}`).attr('disabled', true);
         }
     });
 });

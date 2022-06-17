@@ -1,5 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 
+//TODO
+
 class SiteControllers {
 
   // [GET] /
@@ -24,24 +26,6 @@ class SiteControllers {
   register(req: Request, res: Response, next: NextFunction) {
     try {
         res.status(200).render('Site/guest/register', {layout: false})
-    } catch (error) {
-        res.status(500).render('Status/500', {layout: false})
-    }
-  }
-
-  // [GET] /faq
-    fag(req: Request, res: Response, next: NextFunction) {
-        try {
-            res.status(200).render('Site/guest/faq', {layout: false})
-        } catch (error) {
-            res.status(500).render('Status/500', {layout: false})
-        }
-    }
-
-  // [GET] /about-us
-  about(req: Request, res: Response, next: NextFunction) {
-      try {
-        res.status(200).render('Site/guest/about', { layout: false });
     } catch (error) {
         res.status(500).render('Status/500', {layout: false})
     }

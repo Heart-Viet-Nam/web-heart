@@ -1,7 +1,7 @@
 import express from "express";
 
 // Controllers
-import siteControllers from "../app/controllers/Site/SiteControllers";
+import siteControllers from "../app/controllers/Site/LandingControllers";
 
 const router = express.Router();
 

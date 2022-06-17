@@ -12,7 +12,11 @@ export const messageVietnamese = {
   ER008: `Không nhập ký tự in hoa.`,
   ER009: (param) => `Ảnh tải lên tối đa ${param} MB.`,
   ER0010: `Chỉ cho tải ảnh lên.`,
-  ER0011: `Chỉ nhập số điện thoại`,
+  ER0011: `Chỉ nhập số điện thoại.`,
+  ER0012: (param, minLength, maxLength, current) => `Mục ${param} trong khoảng từ ${minLength} đến ${maxLength} ký tự. (hiện tại ${current} ký tự.)`,
+  ER0013: (limitSize) => `Giới hạn file tải lên là ${limitSize} MB.`,
+  ER0014: (params) => `Chỉ chấp nhận các file ${params}.`,
+  ER0015: `Bắt buộc tối thiểu có một ký tự đặc biệt, con số, chữ cái in hoa và in thường `,
 
   // Auth
   RES001: `Thông tin đăng nhập không đúng.`,

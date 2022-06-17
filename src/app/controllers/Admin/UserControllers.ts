@@ -9,7 +9,7 @@ class UserControllers {
         try {
             
         } catch (error) {
-            
+            res.status(500).render('Status/500', {layout: false})
         }
     }
 
@@ -18,7 +18,7 @@ class UserControllers {
         try {
             
         } catch (error) {
-            
+            res.status(500).render('Status/500', {layout: false})
         }
     }
 
@@ -27,7 +27,7 @@ class UserControllers {
         try {
             
         } catch (error) {
-            
+            res.status(500).render('Status/500', {layout: false})
         }
     }
 
@@ -36,7 +36,7 @@ class UserControllers {
         try {
             
         } catch (error) {
-            
+            res.status(500).render('Status/500', {layout: false})
         }
     }
 
@@ -45,7 +45,7 @@ class UserControllers {
         try {
             
         } catch (error) {
-            
+            res.status(500).render('Status/500', {layout: false})
         }
     }
 
@@ -54,7 +54,7 @@ class UserControllers {
         try {
             
         } catch (error) {
-            
+            res.status(500).render('Status/500', {layout: false})
         }
     }
 
@@ -65,7 +65,7 @@ class UserControllers {
         try {
             
         } catch (error) {
-            
+            res.status(500).render('Status/500', {layout: false})
         }
     }
 
@@ -74,7 +74,7 @@ class UserControllers {
         try {
             
         } catch (error) {
-            
+            res.status(500).render('Status/500', {layout: false})
         }
     }
 
@@ -83,7 +83,7 @@ class UserControllers {
         try {
             
         } catch (error) {
-            
+            res.status(500).render('Status/500', {layout: false})
         }
     }
 
@@ -92,7 +92,7 @@ class UserControllers {
         try {
             
         } catch (error) {
-            
+            res.status(500).render('Status/500', {layout: false})
         }
     }
 
@@ -101,7 +101,7 @@ class UserControllers {
         try {
             
         } catch (error) {
-            
+            res.status(500).render('Status/500', {layout: false})
         }
     }
 
@@ -110,7 +110,7 @@ class UserControllers {
         try {
             
         } catch (error) {
-            
+            res.status(500).render('Status/500', {layout: false})
         }
     }
 
@@ -121,7 +121,7 @@ class UserControllers {
         try {
             
         } catch (error) {
-            
+            res.status(500).render('Status/500', {layout: false})
         }
     }
 
@@ -130,7 +130,7 @@ class UserControllers {
         try {
             
         } catch (error) {
-            
+            res.status(500).render('Status/500', {layout: false})
         }
     }
 
@@ -139,7 +139,7 @@ class UserControllers {
         try {
             
         } catch (error) {
-            
+            res.status(500).render('Status/500', {layout: false})
         }
     }
 
@@ -148,7 +148,7 @@ class UserControllers {
         try {
             
         } catch (error) {
-            
+            res.status(500).render('Status/500', {layout: false})
         }
     }
 
@@ -157,7 +157,7 @@ class UserControllers {
         try {
             
         } catch (error) {
-            
+            res.status(500).render('Status/500', {layout: false})
         }
     }
 
@@ -166,7 +166,7 @@ class UserControllers {
         try {
             
         } catch (error) {
-            
+            res.status(500).render('Status/500', {layout: false})
         }
     }
 }
