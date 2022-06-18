@@ -1,10 +1,10 @@
-import {Request, Response, NextFunction} from 'express'
+import { Request, Response, NextFunction } from 'express';
 
 declare module 'express-session' {
   interface Session {
-    adminLogged: boolean,
-    adminRole: string | number,
-    logged: boolean
+    adminLogged: boolean;
+    adminRole: string | number;
+    logged: boolean;
   }
 }
 
@@ -17,9 +17,9 @@ export const loginAdminSession = (req: Request, res: Response, next: NextFunctio
       res.redirect('/admin/login');
     }
   } catch (error) {
-    res.status(500).render('Status/500', {layout: false});
+    res.status(500).render('Status/500', { layout: false });
   }
-}
+};
 
 export const adminPermission = (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -27,22 +27,22 @@ export const adminPermission = (req: Request, res: Response, next: NextFunction)
     if (status === 0) {
       next();
     } else {
-      res.status(403).render('Status/403', {layout: false})
+      res.status(403).render('Status/403', { layout: false });
     }
   } catch (error) {
     res.status(500).json(error);
   }
-}
+};
 
 export const loginSession = (req: Request, res: Response, next: NextFunction) => {
   try {
-    const status = req.session.logged
-    if(status === true) {
-      next()
+    const status = req.session.logged;
+    if (status === true) {
+      next();
     } else {
-      res.redirect('/login')
+      res.redirect('/login');
     }
   } catch (error) {
-    res.status(500).render('Status/500', {layout: false});
+    res.status(500).render('Status/500', { layout: false });
   }
-}
+};

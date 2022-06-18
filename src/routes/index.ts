@@ -1,9 +1,10 @@
-import { Application } from "express";
-import adminRouter from "./admin";
-import doctorRouter from "./doctor";
-import patientRouter from "./patient";
-import siteRouter from "./site";
-import statusRouter from "./status";
+import { Application } from 'express';
+import adminRouter from './admin';
+import doctorRouter from './doctor';
+import patientRouter from './patient';
+import siteRouter from './site';
+import statusRouter from './status';
+import authRouter from './auth'
 
 const route = (app: Application) => {
   // app.use('/administration')
@@ -12,9 +13,11 @@ const route = (app: Application) => {
 
   // app.use('/user')
 
-  app.use("/", siteRouter);
+  app.use('/auth', authRouter)
 
-  app.use("/", statusRouter);
+  app.use('/', siteRouter);
+
+  app.use('/', statusRouter);
 };
 
 export default route;
