@@ -5,7 +5,6 @@ import siteControllers from '../app/controllers/Site/LandingControllers';
 
 const router = express.Router();
 
-router.get('/about-us', siteControllers.aboutRender);
-router.get('/', siteControllers.ladingPage);
+router.get('/vn-vi', siteControllers.ladingPage);
 
 export default router;

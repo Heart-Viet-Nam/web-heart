@@ -11,7 +11,7 @@ const route = (app: Application) => {
 
   // app.use('/doctor')
 
-  // app.use('/user')
+  app.use('/vn-vi/user')
 
   app.use('/auth', authRouter)
 

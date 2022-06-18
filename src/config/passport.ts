@@ -17,15 +17,15 @@ export const googlePassport = (passport: PassportStatic) => {
     )
   );
 
-  passport.serializeUser((user, done) => {
-    done(null, user.id);
-  });
+  // passport.serializeUser((user, done) => {
+  //   done(null, user.id);
+  // });
 
-  passport.deserializeUser((id, done) => {
-    User.findById(id, (err, user) => {
-      done(err, user);
-    });
-  });
+  // passport.deserializeUser((id, done) => {
+  //   User.findById(id, (err, user) => {
+  //     done(err, user);
+  //   });
+  // });
 };
 
 const FacebookStrategy = Strategy;
