@@ -29,15 +29,6 @@ class SiteControllers {
       res.status(500).render('Status/500', { layout: false });
     }
   }
-
-  // [GET] /contact-us
-  contact(req: Request, res: Response, next: NextFunction) {
-    try {
-      res.status(200).render('Site/guest/contact', { layout: false });
-    } catch (error) {
-      res.status(500).render('Status/500', { layout: false });
-    }
-  }
 }
 
 export default new SiteControllers();

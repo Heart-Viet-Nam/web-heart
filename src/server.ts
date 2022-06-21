@@ -16,7 +16,8 @@ dotenv.config();
 import { sessionStore } from './config/sessionStore';
 import route from './routes';
 import { connectDB } from './config/mongodb';
-import { googlePassport } from './config/passport';
+import { googlePassport } from './config/passport/google';
+import { facebookPassport } from './config/passport/facebook';
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -43,6 +44,7 @@ app.use(
 );
 
 // Passport Middleware
+facebookPassport(passport);
 googlePassport(passport);
 app.use(passport.initialize());
 app.use(passport.session());
@@ -80,7 +82,8 @@ app.use('/js', [
   express.static(path.join(__dirname, `${libraryPath}/lazysizes`)),
   express.static(path.join(__dirname, `${libraryPath}/ckeditor`)),
   express.static(path.join(__dirname, `${libraryPath}/select2/js`)),
-  express.static(path.join(__dirname, `${libraryPath}/hammer`))
+  express.static(path.join(__dirname, `${libraryPath}/hammer`)),
+  express.static(path.join(__dirname, `${libraryPath}/sizzle`))
 ]);
 app.use('/css', [
   express.static(path.join(__dirname, `${libraryPath}/bootstrap/css`)),

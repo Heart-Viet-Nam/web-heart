@@ -1,10 +1,11 @@
-import { messageVietnamese } from '../../message';
+
+import {messageVietnamese} from './message'
 
 $(document).ready(() => {
 
     const nameForm = 'name-form'                //~ Give form name
     const submitButton = 'login-submit-button'  //~ Give submit button name 
-    const actionSubmit = '/admin/create-staff' //~ Give action for submit 
+    const actionSubmit = '/admin/create-doctor' //~ Give action for submit 
     const methodSubmit = 'post'                 //~ Give method for submit
     
     //~ BASE
@@ -88,8 +89,33 @@ $(document).ready(() => {
         }, messageVietnamese.ER0015)
     }
 
+    //~ USING CUSTOM METHODS
+    twoBytes('check2Bytes')
 
-    
+    maxLength('maxNameDoctor', 50, 'họ và tên')
+    noSpace('noSpaceName', 'họ và tên')
+
+    maxLength('maxPhone', 20, 'số điện thoại')
+
+    maxLength('maxEmail', 30, 'email')
+    validEmail('checkValidEmail')
+
+    maxLength('maxAddress', 100, 'địa chỉ')
+    noSpace('noSpaceAddress', 'địa chỉ')
+
+    maxLength('maxSpecialist', 200, 'chuyên khoa')
+    noSpace('noSpaceSpecialist', 'chuyên khoa')
+
+    maxLength('maxResearch', 100, 'công trình nghiên cứu')
+    noSpace('noSpaceResearch', 'công trình nghiên cứu')
+
+    fileSize('checkImageSize', 5)
+
+    maxLength('maxUsername', 100, 'tên tài khoản')
+
+    noSpace('noSpacePassword', 'mật khẩu')
+    rangeLength('limitPassword', 8, 20, 'mật khẩu')
+    strongPassword('checkStrongPassword')
 
     $(`#${nameForm}`).validate({
         onfocusout:(element) => {
@@ -127,6 +153,23 @@ $(document).ready(() => {
                     },
                     dataType: 'json'
                 }
+            },
+            address: {
+                required: true,
+                noSpaceAddress: true,
+                check2Bytes: true,
+                maxAddress: true
+            },
+            specialist: {
+                required: true,
+                noSpaceSpecialist: true,
+                check2Bytes: true,
+                maxSpecialist: true
+            },
+            research: {
+                noSpaceResearch: true,
+                check2Bytes: true,
+                maxResearch: true
             },
             image: {
                 extension: 'jpg|jpeg|png|gif',
@@ -176,6 +219,12 @@ $(document).ready(() => {
             email: {
                 required: messageVietnamese.ER001('email')
             },
+            address: {
+                required: messageVietnamese.ER001('địa chỉ')
+            },
+            specialist: {
+                required: messageVietnamese.ER001('chuyên khoa')
+            },
             image: {
                 extension: messageVietnamese.ER0014('jpg/jpeg, png, gif')
             },
@@ -198,4 +247,4 @@ $(document).ready(() => {
             $(`#${submitButton}`).attr('disabled', true);
         }
     });
-})
+});

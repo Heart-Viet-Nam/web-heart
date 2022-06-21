@@ -3,9 +3,9 @@ import { Request, Response, NextFunction } from 'express';
 class UserControllers {
   //TODO
   // [GET] /user/home
-  async dashboardRender(req: Request, res: Response, next: NextFunction) {
+  async homeRender(req: Request, res: Response, next: NextFunction) {
     try {
-      res.status(200).render('Site/user/dashboard');
+      res.status(200).render('Site/user/home', {layout: 'layouts/user'});
     } catch (error) {
       res.status(500).render('Status/500', { layout: false });
     }
@@ -44,7 +44,7 @@ class UserControllers {
   // [GET] /user/about-us
   async aboutRender(req: Request, res: Response, next: NextFunction) {
     try {
-      res.status(200).render('Site/user/about');
+      res.status(200).render('Site/user/about', {layout: 'layouts/user'});
     } catch (error) {
       res.status(500).render('Status/500', { layout: false });
     }
