@@ -1,1 +1,0 @@
-This folder is a temporary folder to store media files.

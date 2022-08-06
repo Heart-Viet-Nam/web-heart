@@ -2,7 +2,6 @@ import express from 'express';
 import path from 'path';
 import morgan from 'morgan';
 import compression from 'compression';
-import methodOverride from 'method-override';
 import session from 'express-session';
 import expressLayouts from 'express-ejs-layouts';
 import flash from 'connect-flash';
@@ -26,7 +25,13 @@ const port = process.env.PORT || 8080;
 app.use(morgan('dev'));
 
 // Secure
-app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      'frame-src': ["'self'", 'https://www.youtube.com', 'https://youtube.com']
+    }
+  })
+);
 
 // Session
 app.use(
@@ -52,9 +57,6 @@ app.use(passport.session());
 // Flash
 app.use(flash());
 
-// Override
-app.use(methodOverride('_method'));
-
 // Gzip
 app.use(
   compression({
@@ -76,20 +78,12 @@ app.use('/js', [
   express.static(path.join(__dirname, `${libraryPath}/jquery-validation`)),
   express.static(path.join(__dirname, `${libraryPath}/jquery-easing`)),
   express.static(path.join(__dirname, `${libraryPath}/jquery`)),
-  express.static(path.join(__dirname, `${libraryPath}/flatpickr`)),
-  express.static(path.join(__dirname, `${libraryPath}/chart`)),
   express.static(path.join(__dirname, `${libraryPath}/bootstrap/js`)),
-  express.static(path.join(__dirname, `${libraryPath}/lazysizes`)),
-  express.static(path.join(__dirname, `${libraryPath}/ckeditor`)),
-  express.static(path.join(__dirname, `${libraryPath}/select2/js`)),
-  express.static(path.join(__dirname, `${libraryPath}/hammer`)),
-  express.static(path.join(__dirname, `${libraryPath}/sizzle`))
+  express.static(path.join(__dirname, `${libraryPath}/lazysizes`))
 ]);
-app.use('/css', [
-  express.static(path.join(__dirname, `${libraryPath}/bootstrap/css`)),
-  express.static(path.join(__dirname, `${libraryPath}/font-awesome`)),
-  express.static(path.join(__dirname, `${libraryPath}/select2/css`))
-]);
+app.use('/css', [express.static(path.join(__dirname, `${libraryPath}/bootstrap/css`)), express.static(path.join(__dirname, `${libraryPath}/simple-line-icons`))]);
+app.use('/css/fonts/@fortawesome', express.static(path.join(__dirname, `${libraryPath}/font-awesome/webfonts`)));
+
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(favicon(path.join(__dirname, '../public/img/favicon.png')));
 

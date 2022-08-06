@@ -10,13 +10,7 @@ const DoctorSchema = new Schema(
     address: { type: String, maxlength: 100, required: true },
     specialist: { type: String, maxlength: 200, required: true },
     research: { type: String, maxlength: 500 },
-    image: { type: String, maxlength: 300 },
-    account: {
-      type: Schema.Types.ObjectId,
-      ref: 'InternalAccount',
-      required: true,
-      unique: true
-    }
+    image: { type: String, maxlength: 300 }
   },
   {
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }

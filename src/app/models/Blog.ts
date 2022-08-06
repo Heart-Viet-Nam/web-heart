@@ -2,10 +2,11 @@ import { Schema, model } from 'mongoose';
 
 const BlogSchema = new Schema(
   {
-    title: { type: String, maxlength: 300, required: true },
-    description: { type: String, maxlength: 500, required: true },
+    title: { type: String, required: true },
+    description: { type: String, required: true },
     content: { type: String, required: true },
-    thumbnail: { type: String, required: true }
+    thumbnail: { type: String, required: true },
+    author: { type: Schema.Types.ObjectId, ref: 'User', required: true }
   },
   {
     timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
