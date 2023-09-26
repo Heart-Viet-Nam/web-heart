@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  user-heart:
+    image: user-heart
+    container_name: user-heart
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose: 
+      - 8000
+    ports:
+      - 8200:8000

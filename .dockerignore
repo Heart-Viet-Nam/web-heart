@@ -1,0 +1,12 @@
+node_modules
+Test
+.prettierrc
+.env.example
+.vscode
+.gitignore
+README.md 
+yarn.lock
+dist
+fly.toml
+src
+assets
